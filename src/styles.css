@@ -1,3 +1,7 @@
+:root {
+  --teal: #91ddcf;
+  --teal-transparent: #91ddcf6e;
+}
 @font-face {
   font-family: "Tajawal";
   src: url("assets/fonts/Tajawal/Tajawal-Regular.ttf") format("truetype");
@@ -11,6 +15,7 @@
   font-weight: normal;
   font-size: normal;
 }
+
 * {
   margin: 0;
   padding: 0;
