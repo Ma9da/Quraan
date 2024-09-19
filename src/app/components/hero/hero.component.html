@@ -1,59 +1,49 @@
-<div class="row justify-content-center">
-  <div class="col hero-section">
-    <div class="over-lay">
-      <img
-        [ngSrc]="imgSrc"
-        class="img-fluid position-relative z-0"
-        alt="quran"
-        fill
-        priority
-      />
+<div class="container-fluid gx-0 hero-bg"></div>
+<div class="container">
+  <div class="row justify-content-center floating-card">
+    <div class="col-md-3 col-xs-12">
+      <!-- card -->
+      <mat-card class="hero-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="quran-img"></div>
+          <mat-card-title>القرآن الكريم</mat-card-title>
+          <mat-card-subtitle>قراءة إلكترونية</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <!-- end card -->
     </div>
-  </div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-md-3 col-xs-12">
-    <!-- card -->
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="quran-img"></div>
-        <mat-card-title>القرآن الكريم</mat-card-title>
-        <mat-card-subtitle>قراءة إلكترونية</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-    <!-- end card -->
-  </div>
-  <div class="col-md-3 col-xs-12">
-    <!-- card -->
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="tafsir-img"></div>
-        <mat-card-title>اﻵيات تفسير</mat-card-title>
-        <mat-card-subtitle>تفسير اﻵيات</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-    <!-- end card  -->
-  </div>
-  <div class="col-md-3 col-xs-12">
-    <!-- card -->
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="listening-img"></div>
-        <mat-card-title>إستماع اﻵيات </mat-card-title>
-        <mat-card-subtitle>مقاطع مسموعة</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-    <!-- end card  -->
-  </div>
-  <div class="col-md-3 col-xs-12">
-    <!-- card -->
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="translation-img"></div>
-        <mat-card-title>ترجمة اﻵيات </mat-card-title>
-        <mat-card-subtitle>ترجمة لعدة لغات</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-    <!-- end card  -->
+    <div class="col-md-3 col-xs-12">
+      <!-- card -->
+      <mat-card class="hero-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="tafsir-img"></div>
+          <mat-card-title>اﻵيات تفسير</mat-card-title>
+          <mat-card-subtitle>تفسير اﻵيات</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <!-- end card  -->
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <!-- card -->
+      <mat-card class="hero-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="listening-img"></div>
+          <mat-card-title>إستماع اﻵيات </mat-card-title>
+          <mat-card-subtitle>مقاطع مسموعة</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <!-- end card  -->
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <!-- card -->
+      <mat-card class="hero-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="translation-img"></div>
+          <mat-card-title>ترجمة اﻵيات </mat-card-title>
+          <mat-card-subtitle>ترجمة لعدة لغات</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <!-- end card  -->
+    </div>
   </div>
 </div>
