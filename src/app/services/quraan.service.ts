@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class QuraanService {
-  baseUrl: string = `http://api.alquran.cloud/v1`;
+  baseUrl: string = `https://api.alquran.cloud/v1`;
   quraanEndPoint: string = `/quran/quran-uthmani`;
   surahEndPoint: string = `/surah`;
   constructor(private http: HttpClient) {}
