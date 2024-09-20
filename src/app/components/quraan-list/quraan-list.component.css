@@ -1,0 +1,7 @@
+.card-head-bagde {
+  color: var(--teal);
+  background: #ffffff;
+}
+.card-head {
+  background-color: var(--teal-transparent);
+}

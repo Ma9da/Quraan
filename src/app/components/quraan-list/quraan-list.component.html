@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <div class="row justify-content-center m-higher">
+    <ng-container *ngFor="let q of fullQuraan">
+      <div class="col-md-3" *ngIf="q">
+        <ul class="list-group my-2">
+          <li class="list-group-item card-head" (click)="gotoItems(q)">
+            {{ q.name }}
+            <span class="badge card-head-bagde float-end">{{ q.number }}</span>
+          </li>
+          <li class="list-group-item">{{ q.englishName }}</li>
+          <li class="list-group-item">{{ q.englishNameTranslation }}</li>
+          <li class="list-group-item">{{ q.revelationType }}</li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</div>
