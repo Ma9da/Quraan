@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core';
 import { QuraanService } from '../../services/quraan.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [HttpClientModule, NgFor],
+  imports: [HttpClientModule, NgFor, NgIf],
   providers: [QuraanService],
   templateUrl: './surah.component.html',
   styleUrl: './surah.component.css',
