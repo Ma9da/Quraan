@@ -1,4 +1,4 @@
-<div class="layer">
+<div class="layer" *ngIf="isLoading | async">
   <img id="layer-logo" src="assets/imgs/logo.svg" alt="logo" />
   <p id="layer-text">جاري التحميل...</p>
 </div>
