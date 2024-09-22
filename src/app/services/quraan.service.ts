@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,10 @@ export class QuraanService {
   quraanEndPoint: string = `/quran/quran-uthmani`;
   surahEndPoint: string = `/surah`;
   constructor(private http: HttpClient) {}
-  getQuraan() {
+  getQuraan(): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.quraanEndPoint}`);
   }
-  getSurah(number: number) {
+  getSurah(number: number): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.surahEndPoint}/${number}`);
   }
 }

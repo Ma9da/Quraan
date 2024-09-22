@@ -1,9 +1,16 @@
-<div class="container-fluid gx-0 hero-bg"></div>
+<div class="container-fluid gx-0 hero-bg priority"></div>
 <div class="container">
   <div class="row justify-content-center floating-card">
     <div class="col-md-3 col-xs-12">
       <!-- card -->
-      <mat-card class="hero-card" appearance="outlined">
+      <mat-card
+        class="hero-card"
+        appearance="outlined"
+        (click)="navigateToQuranText()"
+        [@hoverAnimation]="isHovered ? 'hovered' : 'normal'"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+      >
         <mat-card-header>
           <div mat-card-avatar class="quran-img"></div>
           <mat-card-title>القرآن الكريم</mat-card-title>
@@ -14,7 +21,13 @@
     </div>
     <div class="col-md-3 col-xs-12">
       <!-- card -->
-      <mat-card class="hero-card" appearance="outlined">
+      <mat-card
+        class="hero-card"
+        appearance="outlined"
+        [@hoverAnimation]="isHovered ? 'hovered' : 'normal'"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+      >
         <mat-card-header>
           <div mat-card-avatar class="tafsir-img"></div>
           <mat-card-title>اﻵيات تفسير</mat-card-title>
@@ -25,7 +38,13 @@
     </div>
     <div class="col-md-3 col-xs-12">
       <!-- card -->
-      <mat-card class="hero-card" appearance="outlined">
+      <mat-card
+        class="hero-card"
+        appearance="outlined"
+        [@hoverAnimation]="isHovered ? 'hovered' : 'normal'"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+      >
         <mat-card-header>
           <div mat-card-avatar class="listening-img"></div>
           <mat-card-title>إستماع اﻵيات </mat-card-title>
@@ -36,7 +55,13 @@
     </div>
     <div class="col-md-3 col-xs-12">
       <!-- card -->
-      <mat-card class="hero-card" appearance="outlined">
+      <mat-card
+        class="hero-card"
+        appearance="outlined"
+        [@hoverAnimation]="isHovered ? 'hovered' : 'normal'"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()"
+      >
         <mat-card-header>
           <div mat-card-avatar class="translation-img"></div>
           <mat-card-title>ترجمة اﻵيات </mat-card-title>

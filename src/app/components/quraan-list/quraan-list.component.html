@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="row justify-content-center m-higher">
-    <ng-container *ngFor="let q of fullQuraan">
+    <ng-container *ngFor="let q of paginatedQuraan">
       <div class="col-md-3" *ngIf="q">
         <ul class="list-group my-2">
           <li class="list-group-item card-head" (click)="gotoItems(q)">
@@ -13,5 +13,13 @@
         </ul>
       </div>
     </ng-container>
+    <mat-paginator
+      [length]="fullQuraan.length"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageIndex]="currentPage"
+      (page)="handlePage($event)"
+    >
+    </mat-paginator>
   </div>
 </div>
