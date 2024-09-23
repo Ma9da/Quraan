@@ -1,3 +1,19 @@
 * {
   font-family: "Amiri", serif !important;
 }
+img {
+  width: 100%;
+}
+.aya-number {
+  position: relative;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  display: inline;
+  position: absolute;
+  bottom: -5%;
+  font-size: 12px;
+}

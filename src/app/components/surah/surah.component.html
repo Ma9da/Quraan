@@ -6,7 +6,13 @@
       </h4>
       <ul class="list-group list-group-flush">
         <ng-container *ngFor="let ayah of ayahs">
-          <li class="list-group-item">{{ ayah?.text }}</li>
+          <li class="list-group-item d-flex align-items-center">
+            {{ ayah?.text }}
+            <span class="aya-number mx-1">
+              <img src="assets/icons/Ayah.png" alt="" />
+              <p>{{ ayah.numberInSurah }}</p>
+            </span>
+          </li>
         </ng-container>
       </ul>
       <h6 *ngIf="surah?.name">صدق الله العظيم</h6>

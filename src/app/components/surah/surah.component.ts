@@ -22,6 +22,7 @@ export class SurahComponent {
       this.quraanService.getSurah(surahNumber).subscribe((surah: any) => {
         this.surah = surah.data;
         this.ayahs = surah.data.ayahs;
+        console.log(this.ayahs);
       });
     });
   }
