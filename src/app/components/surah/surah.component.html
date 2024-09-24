@@ -1,12 +1,36 @@
 <div class="container">
   <div class="row justify-content-center m-higher pt-5">
     <div class="col">
-      <h4>
-        {{ surah?.name }}
-      </h4>
+      <div class="d-flex">
+        <h4>
+          {{ surah?.name }}
+        </h4>
+        <div class="btn-group">
+          <button
+            class="btn btn-sm dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            حجم الخط
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" (click)="selectedFont = 'normal'">
+              عادي
+            </li>
+            <li class="dropdown-item" (click)="selectedFont = 'large'">كبير</li>
+            <li class="dropdown-item" (click)="selectedFont = 'xLarge'">
+              كبير جداً
+            </li>
+          </ul>
+        </div>
+      </div>
       <ul class="list-group list-group-flush">
         <ng-container *ngFor="let ayah of ayahs">
-          <li class="list-group-item d-flex align-items-center flex-wrap">
+          <li
+            [ngClass]="selectedFont"
+            class="list-group-item d-flex align-items-center flex-wrap aya-li"
+          >
             {{ ayah?.text }}
             <span class="aya-number mx-1">
               <img src="assets/icons/Ayah.png" alt="" />

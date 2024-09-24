@@ -17,3 +17,12 @@ p {
   bottom: -5%;
   font-size: 12px;
 }
+.normal {
+  font-size: 18px;
+}
+.large {
+  font-size: 20px;
+}
+.xLarge {
+  font-size: 25px;
+}
