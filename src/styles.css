@@ -10,10 +10,11 @@
 }
 
 @font-face {
-  font-family: "Amiri", serif;
-  src: url("assets/fonts/Amiri/Amiri-Regular.ttf");
+  font-family: "UthmanicHafs_v22";
+  src: url("assets/fonts/UthmanicHafs_v22/UthmanicHafs_V22.ttf")
+    format("truetype");
   font-weight: normal;
-  font-size: normal;
+  font-style: normal;
 }
 
 * {

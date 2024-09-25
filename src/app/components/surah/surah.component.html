@@ -1,18 +1,19 @@
 <div class="container">
-  <div class="row justify-content-center m-higher pt-5">
+  <div class="row py-5 g-0 surah-header px-2 mb-5">
     <div class="col">
-      <div class="d-flex">
-        <h4>
-          {{ surah?.name }}
-        </h4>
-        <div class="mx-1 btn-group">
+      <h4 class="text-light">
+        {{ surah?.name }}
+      </h4>
+
+      <ul class="list-group d-flex flex-row list-unstyled">
+        <li class="mx-1 btn-group">
           <button
-            class="btn btn-sm dropdown-toggle"
+            class="btn btn-sm dropdown-toggle text-light"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            حجم الخط
+            تغيير حجم الخط
           </button>
           <ul class="dropdown-menu">
             <li class="dropdown-item" (click)="selectedFont = 'normal'">
@@ -23,23 +24,41 @@
               كبير جداً
             </li>
           </ul>
-        </div>
-      </div>
-      <ul class="list-group list-group-flush">
-        <ng-container *ngFor="let ayah of ayahs">
-          <li
-            [ngClass]="selectedFont"
-            class="list-group-item d-flex align-items-center flex-wrap aya-li"
+        </li>
+        <li class="mx-1">
+          <span class="text-light">ترتيب السورة</span>
+          <span class="mx-1 text-secondary badge bg-light">
+            {{ surah.number }}
+          </span>
+        </li>
+        <li class="mx-1">
+          <span class="text-light">عدد اﻵيات</span>
+          <span class="mx-1 text-secondary badge bg-light">
+            {{ surah.numberOfAyahs }}</span
           >
-            {{ ayah?.text }}
-            <span class="aya-number mx-1">
-              <img src="assets/icons/Ayah.png" alt="" />
-              <p>{{ ayah.numberInSurah }}</p>
-            </span>
-          </li>
-        </ng-container>
+        </li>
+        <li class="mx-1">
+          <span class="text-light">التنزيل</span>
+          <span class="mx-1 text-secondary badge bg-light">
+            {{ surah.revelationType }}</span
+          >
+        </li>
       </ul>
-      <h6 *ngIf="surah?.name">صدق الله العظيم</h6>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-sm-12">
+      <ng-container *ngFor="let ayah of ayahs">
+        <span class="aya" [ngClass]="selectedFont">
+          {{ ayah?.text }}
+          <span class="aya-number mx-1 position-relative d-inline-block">
+            <img src="assets/icons/Ayah2.svg" class="w-100" alt="aya-number" />
+            <p class="position-absolute m-0 text-center">
+              {{ ayah.numberInSurah }}
+            </p>
+          </span>
+        </span>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -1,22 +1,20 @@
 * {
-  font-family: "Amiri", serif !important;
-}
-img {
-  width: 100%;
+  font-family: tajawal !important;
 }
 .aya-number {
-  position: relative;
-  width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 5%;
 }
 p {
-  display: inline;
-  position: absolute;
-  bottom: -5%;
-  font-size: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px !important;
 }
+.surah-header {
+  background-color: var(--teal);
+}
+
+/* adjusting font dropdown  */
 .normal {
   font-size: 18px;
 }
