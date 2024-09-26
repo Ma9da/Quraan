@@ -26,3 +26,14 @@
 .m-higher {
   margin-bottom: 5rem;
 }
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--teal-transparent);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--teal);
+}
