@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { QuraanService } from '../../services/quraan.service';
-import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,12 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [HttpClientModule, NgFor, NgIf, MatIconModule, NgClass],
-  providers: [QuraanService],
+  imports: [NgFor, NgIf, MatIconModule, NgClass],
+  providers: [],
   templateUrl: './surah.component.html',
   styleUrl: './surah.component.css',
 })
-export class SurahComponent {
+export class SurahComponent implements OnInit {
   ayahs: any = [];
   surah: any = {};
   route = inject(ActivatedRoute);
