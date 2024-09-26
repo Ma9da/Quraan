@@ -14,7 +14,11 @@ p {
 .surah-header {
   background-color: var(--teal);
 }
-
+.btn-teal {
+  background-color: var(--teal);
+  color: #ffff;
+  font-weight: 200;
+}
 /* adjusting font dropdown  */
 .normal {
   font-size: 18px;

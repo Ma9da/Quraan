@@ -60,5 +60,21 @@
         </span>
       </ng-container>
     </div>
+    <div class="my-5 d-flex justify-content-around">
+      <button
+        class="btn btn-teal"
+        (click)="previousSurah(surah.number)"
+        [ngClass]="surah.number === 1 ? 'disabled' : ''"
+      >
+        السورة السابقة
+      </button>
+      <button
+        class="btn btn-teal"
+        [ngClass]="surah.number === 114 ? 'disabled' : ''"
+        (click)="nextSurah(surah.number)"
+      >
+        السورة التالية
+      </button>
+    </div>
   </div>
 </div>

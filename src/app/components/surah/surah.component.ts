@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { QuraanService } from '../../services/quraan.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -17,6 +17,7 @@ export class SurahComponent {
   ayahs: any = [];
   surah: any = {};
   route = inject(ActivatedRoute);
+  router = inject(Router);
   quraanService = inject(QuraanService);
   selectedFont!: string;
   ngOnInit() {
@@ -27,5 +28,17 @@ export class SurahComponent {
         this.ayahs = surah.data.ayahs;
       });
     });
+  }
+  nextSurah(number: number) {
+    const lastSurah: number = 114;
+    if (number < lastSurah) {
+      this.router.navigateByUrl(`/quran/${number + 1}`);
+    }
+  }
+  previousSurah(number: number) {
+    const firstSurah: number = 1;
+    if (number > firstSurah) {
+      this.router.navigateByUrl(`/quran/${number - 1}`);
+    }
   }
 }
