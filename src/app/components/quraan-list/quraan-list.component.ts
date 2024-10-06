@@ -12,7 +12,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './quraan-list.component.css',
 })
 export class QuraanListComponent implements OnInit {
-  fullQuraan: Array<any> = [];
+  surahs: Array<any> = [];
   quraanService = inject(QuraanService);
   router = inject(Router);
   // pagination
@@ -21,18 +21,18 @@ export class QuraanListComponent implements OnInit {
   showFirstLastButtons: boolean = true;
 
   ngOnInit() {
-    this.quraanService.getQuraan().subscribe((data: any) => {
-      this.fullQuraan = data.data.surahs;
+    this.quraanService.getSurahs().subscribe((data: any) => {
+      this.surahs = data.data;
     });
   }
   gotoItems(surah: any) {
     const surahNumber = surah ? surah.number : null;
-    this.router.navigate(['/quran', surahNumber]);
+    this.router.navigate(['/surah', surahNumber]);
   }
   // pagination
   get paginatedQuraan() {
     const startIndex = this.currentPage * this.pageSize;
-    return this.fullQuraan.slice(startIndex, startIndex + this.pageSize);
+    return this.surahs.slice(startIndex, startIndex + this.pageSize);
   }
   handlePage(pageEvent: PageEvent) {
     this.currentPage = pageEvent.pageIndex;

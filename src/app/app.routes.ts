@@ -3,7 +3,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { QuraanListComponent } from './components/quraan-list/quraan-list.component';
 import { SurahComponent } from './components/surah/surah.component';
-import { LoaderComponent } from './components/loader/loader.component';
+import { AudioQuraanListComponent } from './components/audio-quraan-list/audio-quraan-list.component';
 
 export const routes: Routes = [
   {
@@ -11,16 +11,16 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'quran',
+    path: 'surah',
     component: QuraanListComponent,
   },
   {
-    path: 'quran/:number',
+    path: 'surah/:number',
     component: SurahComponent,
   },
   {
-    path: 'loader',
-    component: LoaderComponent,
+    path: 'audio',
+    component: AudioQuraanListComponent,
   },
   {
     path: '**',

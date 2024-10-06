@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class SurahComponent implements OnInit {
   ayahs: any = [];
   surah: any = {};
+  surahs: any = [];
   route = inject(ActivatedRoute);
   router = inject(Router);
   quraanService = inject(QuraanService);
@@ -27,17 +28,27 @@ export class SurahComponent implements OnInit {
         this.ayahs = surah.data.ayahs;
       });
     });
+    this.quraanService.getSurahs().subscribe((surahs: any) => {
+      this.surahs = surahs.data;
+      console.log(this.surahs);
+    });
+  }
+  chooseSurah(number: number) {
+    const lastSurah: number = 114;
+    if (number < lastSurah) {
+      this.router.navigateByUrl(`/surah/${number}`);
+    }
   }
   nextSurah(number: number) {
     const lastSurah: number = 114;
     if (number < lastSurah) {
-      this.router.navigateByUrl(`/quran/${number + 1}`);
+      this.router.navigateByUrl(`/surah/${number + 1}`);
     }
   }
   previousSurah(number: number) {
     const firstSurah: number = 1;
     if (number > firstSurah) {
-      this.router.navigateByUrl(`/quran/${number - 1}`);
+      this.router.navigateByUrl(`/surah/${number - 1}`);
     }
   }
 }

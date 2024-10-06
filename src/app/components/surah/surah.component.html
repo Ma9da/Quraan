@@ -4,11 +4,32 @@
       <h4 class="text-light">
         {{ surah?.name }}
       </h4>
-
       <ul class="list-group d-flex flex-row list-unstyled align-items-center">
+        <!-- start -->
         <li class="m-1 btn-group">
           <button
-            class="btn btn-sm dropdown-toggle text-light"
+            class="btn btn-sm dropdown-toggle text-light border-light"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            سور القرآن الكريم
+          </button>
+          <ul class="dropdown-menu height overflow-y-scroll">
+            <li
+              class="dropdown-item"
+              *ngFor="let surah of surahs"
+              (click)="chooseSurah(surah.number)"
+            >
+              {{ surah.name }}
+            </li>
+          </ul>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li class="m-1 btn-group">
+          <button
+            class="btn btn-sm dropdown-toggle text-light border-light"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -25,6 +46,7 @@
             </li>
           </ul>
         </li>
+        <!-- end -->
         <li class="mx-1">
           <span class="text-light">ترتيب السورة</span>
           <span class="mx-1 text-secondary badge bg-light">
@@ -46,7 +68,24 @@
       </ul>
     </div>
   </div>
-  <div class="row justify-content-center m-higher">
+  <div class="my-5 d-flex justify-content-around align-items-center">
+    <button
+      class="btn btn-teal"
+      (click)="previousSurah(surah.number)"
+      [ngClass]="surah.number === 1 ? 'disabled' : ''"
+    >
+      السورة السابقة
+    </button>
+    <h3>{{ surah?.name }}</h3>
+    <button
+      class="btn btn-teal"
+      [ngClass]="surah.number === 114 ? 'disabled' : ''"
+      (click)="nextSurah(surah.number)"
+    >
+      السورة التالية
+    </button>
+  </div>
+  <div class="row justify-content-center m-higher text-center">
     <div class="col-md-8 col-sm-12">
       <ng-container *ngFor="let ayah of ayahs">
         <span class="aya" [ngClass]="selectedFont">
@@ -59,22 +98,6 @@
           </span>
         </span>
       </ng-container>
-    </div>
-    <div class="my-5 d-flex justify-content-around">
-      <button
-        class="btn btn-teal"
-        (click)="previousSurah(surah.number)"
-        [ngClass]="surah.number === 1 ? 'disabled' : ''"
-      >
-        السورة السابقة
-      </button>
-      <button
-        class="btn btn-teal"
-        [ngClass]="surah.number === 114 ? 'disabled' : ''"
-        (click)="nextSurah(surah.number)"
-      >
-        السورة التالية
-      </button>
     </div>
   </div>
 </div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center my-5">
+    <div class="col text-center">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          اختر القارئ
+        </button>
+        <ul class="dropdown-menu list-height overflow-y-scroll">
+          <ng-container *ngFor="let recieter of recieters">
+            <li
+              class="dropdown-item"
+              [ngClass]="recieter.language !== 'ar' ? 'visually-hidden' : ''"
+            >
+              {{ recieter.name }}
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-3">
+      <!-- <ul class="list-group">
+        <li class="list-group-item active" aria-current="true">
+          An active item
+        </li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">
+          <figure>
+            <audio
+              class="w-100"
+              controls
+              src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3"
+            ></audio>
+          </figure>
+        </li>
+      </ul> -->
+    </div>
+  </div>
+</div>

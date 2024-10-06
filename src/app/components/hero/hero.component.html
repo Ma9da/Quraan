@@ -42,6 +42,7 @@
         class="hero-card"
         appearance="outlined"
         [@hoverAnimation]="isHovered ? 'hovered' : 'normal'"
+        (click)="navigateToQuranAudio()"
         (mouseenter)="onMouseEnter()"
         (mouseleave)="onMouseLeave()"
       >

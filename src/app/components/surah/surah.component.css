@@ -19,6 +19,9 @@ p {
   color: #ffff;
   font-weight: 200;
 }
+.height {
+  height: 350px;
+}
 /* adjusting font dropdown  */
 .normal {
   font-size: 18px;

@@ -30,7 +30,10 @@ export class HeroComponent {
   route = inject(Router);
   isHovered: boolean = false;
   navigateToQuranText() {
-    this.route.navigate(['/quran']);
+    this.route.navigate(['/surah']);
+  }
+  navigateToQuranAudio() {
+    this.route.navigate(['/audio']);
   }
   // Methods to handle hover state
   onMouseEnter() {
