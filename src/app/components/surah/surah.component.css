@@ -17,7 +17,7 @@ p {
 .btn-teal {
   background-color: var(--teal);
   color: #ffff;
-  font-weight: 200;
+  font-weight: bold;
 }
 .height {
   height: 350px;

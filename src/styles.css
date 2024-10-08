@@ -1,5 +1,6 @@
 :root {
   --teal: #91ddcf;
+  --teal-dark: #6bb6a8;
   --teal-transparent: #91ddcf6e;
 }
 @font-face {
@@ -38,4 +39,12 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background-color: var(--teal);
+}
+.text-teal {
+  color: var(--teal-dark) !important;
+}
+/* bookmark styling */
+#bookmarked-ayah {
+  background-color: var(--teal-transparent);
+  padding: 10px 0;
 }

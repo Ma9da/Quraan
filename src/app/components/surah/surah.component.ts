@@ -30,7 +30,6 @@ export class SurahComponent implements OnInit {
     });
     this.quraanService.getSurahs().subscribe((surahs: any) => {
       this.surahs = surahs.data;
-      console.log(this.surahs);
     });
   }
   chooseSurah(number: number) {

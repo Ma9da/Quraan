@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="surah?.name">
   <div class="row py-5 g-0 surah-header px-2 mb-5">
     <div class="col">
       <h4 class="text-light">
@@ -8,7 +8,7 @@
         <!-- start -->
         <li class="m-1 btn-group">
           <button
-            class="btn btn-sm dropdown-toggle text-light border-light"
+            class="btn btn-sm dropdown-toggle bg-light text-teal border-light"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -29,7 +29,7 @@
         <!-- start -->
         <li class="m-1 btn-group">
           <button
-            class="btn btn-sm dropdown-toggle text-light border-light"
+            class="btn btn-sm dropdown-toggle text-teal bg-light border-light"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -48,20 +48,20 @@
         </li>
         <!-- end -->
         <li class="mx-1">
-          <span class="text-light">ترتيب السورة</span>
-          <span class="mx-1 text-secondary badge bg-light">
+          <span class="text-light fw-bold">ترتيب السورة</span>
+          <span class="mx-1 text-secondary badge bg-light text-teal">
             {{ surah.number }}
           </span>
         </li>
         <li class="mx-1">
-          <span class="text-light">عدد اﻵيات</span>
-          <span class="mx-1 text-secondary badge bg-light">
+          <span class="text-light fw-bold">عدد اﻵيات</span>
+          <span class="mx-1 text-secondary badge bg-light text-teal">
             {{ surah.numberOfAyahs }}</span
           >
         </li>
         <li class="mx-1">
-          <span class="text-light">التنزيل</span>
-          <span class="mx-1 text-secondary badge bg-light">
+          <span class="text-light fw-bold">التنزيل</span>
+          <span class="mx-1 text-secondary badge bg-light text-teal">
             {{ surah.revelationType === "Medinan" ? "مدنية" : "مكية" }}</span
           >
         </li>
