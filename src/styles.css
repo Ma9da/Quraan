@@ -1,6 +1,7 @@
 :root {
   --teal: #91ddcf;
   --teal-dark: #6bb6a8;
+  --teal-light: #aeece1;
   --teal-transparent: #91ddcf6e;
 }
 @font-face {
@@ -40,11 +41,24 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--teal);
 }
+svg {
+  fill: #ffffff;
+}
 .text-teal {
   color: var(--teal-dark) !important;
 }
-/* bookmark styling */
-#bookmarked-ayah {
-  background-color: var(--teal-transparent);
-  padding: 10px 0;
+.btn-teal {
+  background-color: var(--teal);
+  color: #ffff;
+  font-weight: bold;
+}
+.btn-teal:hover svg {
+  fill: var(--teal-dark);
+}
+.btn-teal:hover {
+  color: var(--teal-dark);
+  background-color: #ffffff;
+  border: 1px solid var(--teal-dark);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.2s ease;
 }

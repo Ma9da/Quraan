@@ -1,5 +1,5 @@
 * {
-  font-family: tajawal !important;
+  font-family: amiri !important;
 }
 .aya-number {
   width: 30px;
@@ -14,13 +14,28 @@ p {
 .surah-header {
   background-color: var(--teal);
 }
-.btn-teal {
-  background-color: var(--teal);
-  color: #ffff;
-  font-weight: bold;
-}
 .height {
   height: 350px;
+}
+.bookmark-btn {
+  top: -32px;
+  right: 0;
+  opacity: 0;
+  width: 130px;
+}
+.aya {
+  padding: 10px 0;
+}
+.aya:hover .bookmark-btn {
+  opacity: 1;
+}
+.aya:hover {
+  background-color: var(--teal-transparent);
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
 }
 /* adjusting font dropdown  */
 .normal {
@@ -32,6 +47,8 @@ p {
 .xLarge {
   font-size: 25px;
 }
+
+/*======== responsive ======== */
 @media (max-width: 768px) {
   ul {
     flex-wrap: wrap;
