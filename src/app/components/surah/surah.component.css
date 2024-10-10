@@ -1,5 +1,5 @@
 * {
-  font-family: amiri !important;
+  font-family: "tajawel" !important;
 }
 .aya-number {
   width: 30px;
@@ -25,6 +25,7 @@ p {
 }
 .aya {
   padding: 10px 0;
+  letter-spacing: normal;
 }
 .aya:hover .bookmark-btn {
   opacity: 1;
