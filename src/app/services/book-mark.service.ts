@@ -39,7 +39,7 @@ export class BookMarkService {
         return bookMarkInfoParsed;
       }
     }
-    return null; // Default if no bookmark is stored or not running in browser
+    return NaN;
   }
   navigateToBookMark() {
     const surahNumber = this.getBookMark().surahNumber;
