@@ -17,12 +17,15 @@ export class SurahComponent implements OnInit {
   surah: any = {};
   surahs: any = [];
   selectedFont!: string;
-  ayahIndex = parseInt(localStorage.getItem('ayahIndex') || '0', 10);
+  bookMarkInfo!: any;
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private quraanService = inject(QuraanService);
   private bookmarkService = inject(BookMarkService);
   ngOnInit() {
+    this.bookmarkService.getAyahIndexObservable().subscribe((info: any) => {
+      this.bookMarkInfo = info;
+    });
     this.route.params.subscribe((param: any) => {
       const surahNumber: number = param.number;
       this.quraanService.getSurah(surahNumber).subscribe((surah: any) => {

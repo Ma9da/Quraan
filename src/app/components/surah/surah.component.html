@@ -92,7 +92,10 @@
           class="aya position-relative"
           [ngClass]="selectedFont"
           [id]="i"
-          [class.aya-bookMark]="i === ayahIndex"
+          [class.aya-bookMark]="
+            i === bookMarkInfo.ayahIndex &&
+            surah.number === bookMarkInfo.surahNumber
+          "
         >
           <button
             class="btn btn-teal position-absolute bookmark-btn"
