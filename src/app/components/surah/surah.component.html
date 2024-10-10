@@ -87,9 +87,17 @@
   </div>
   <div class="row justify-content-center m-higher text-center">
     <div class="col-md-8 col-sm-12">
-      <ng-container *ngFor="let ayah of ayahs">
-        <span class="aya position-relative" [ngClass]="selectedFont">
-          <button class="btn btn-teal position-absolute bookmark-btn">
+      <ng-container *ngFor="let ayah of ayahs; let i = index">
+        <span
+          class="aya position-relative"
+          [ngClass]="selectedFont"
+          [id]="i"
+          [class.aya-bookMark]="i === ayahIndex"
+        >
+          <button
+            class="btn btn-teal position-absolute bookmark-btn"
+            (click)="saveBookMark(surah.number, i)"
+          >
             إضافة علامة
             <svg
               xmlns="http://www.w3.org/2000/svg"

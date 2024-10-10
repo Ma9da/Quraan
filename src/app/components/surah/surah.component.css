@@ -29,7 +29,7 @@ p {
 .aya:hover .bookmark-btn {
   opacity: 1;
 }
-.aya:hover {
+.aya-bookMark {
   background-color: var(--teal-transparent);
   transition: 1s;
   -webkit-transition: 1s;

@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { QuraanService } from '../../services/quraan.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+import { NgClass, NgFor, NgIf } from '@angular/common';
+import { BookMarkService } from '../../services/book-mark.service';
 
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [NgFor, NgIf, MatIconModule, NgClass],
+  imports: [NgFor, NgIf, NgClass],
   providers: [],
   templateUrl: './surah.component.html',
   styleUrl: './surah.component.css',
@@ -16,10 +16,12 @@ export class SurahComponent implements OnInit {
   ayahs: any = [];
   surah: any = {};
   surahs: any = [];
-  route = inject(ActivatedRoute);
-  router = inject(Router);
-  quraanService = inject(QuraanService);
   selectedFont!: string;
+  ayahIndex = parseInt(localStorage.getItem('ayahIndex') || '0', 10);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private quraanService = inject(QuraanService);
+  private bookmarkService = inject(BookMarkService);
   ngOnInit() {
     this.route.params.subscribe((param: any) => {
       const surahNumber: number = param.number;
@@ -31,6 +33,11 @@ export class SurahComponent implements OnInit {
     this.quraanService.getSurahs().subscribe((surahs: any) => {
       this.surahs = surahs.data;
     });
+  }
+  saveBookMark(surah: any, index: number) {
+    if (surah) {
+      this.bookmarkService.addBookMark(surah, index);
+    }
   }
   chooseSurah(number: number) {
     const lastSurah: number = 114;
