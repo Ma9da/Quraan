@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>إضافة اﻵية كعلامة</h2>
+<mat-dialog-content>
+  {{ data.ayah }}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="addBookmark(data.surah, data.index)">
+    إضافة
+  </button>
+  <button mat-button mat-dialog-close>إغلاق</button>
+</mat-dialog-actions>

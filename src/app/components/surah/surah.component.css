@@ -27,6 +27,9 @@ p {
   padding: 10px 0;
   letter-spacing: normal;
 }
+.aya:active {
+  border: 2px solid var(--teal-transparent);
+}
 .aya:hover .bookmark-btn {
   opacity: 1;
 }
