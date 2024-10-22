@@ -1,48 +1,57 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuraanService } from '../../services/quraan.service';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { BookMarkService } from '../../services/book-mark.service';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { BookmarkModalComponent } from '../bookmark-modal/bookmark-modal.component';
+import { IsurahResponse } from '../../model/isurah-response';
+import { Isurah } from '../../model/isurah';
+import { Iayah } from '../../model/iayah';
+import { IsurahsResponse } from '../../model/isurahs-response';
+import { map, Observable, switchMap } from 'rxjs';
 @Component({
   selector: 'app-surah',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, MatButtonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
   templateUrl: './surah.component.html',
   styleUrl: './surah.component.css',
+  imports: [NgFor, NgIf, NgClass, MatButtonModule, AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SurahComponent implements OnInit {
-  ayahs: any = [];
-  surah: any = {};
-  surahs: any = [];
-  ActivesurahNumber!: number;
+  ayahs: Iayah[] = [];
+  surah$: Observable<Isurah> | undefined;
+  surahs$!: Observable<Isurah[]>;
+  activesurahNumber!: number;
   selectedFont!: string;
   bookMarkInfo!: any;
+
+  // Services
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private quraanService = inject(QuraanService);
   private bookmarkService = inject(BookMarkService);
+
   ngOnInit() {
+    // bookmark subscribe
     this.bookmarkService.getAyahIndexObservable().subscribe((info: any) => {
       this.bookMarkInfo = info;
     });
-    this.route.params.subscribe((param: any) => {
-      this.ActivesurahNumber = param.number;
-      this.quraanService
-        .getSurah(this.ActivesurahNumber)
-        .subscribe((surah: any) => {
-          this.surah = surah.data;
-          this.ayahs = surah.data.ayahs;
-        });
-    });
-    this.quraanService.getSurahs().subscribe((surahs: any) => {
-      this.surahs = surahs.data;
-    });
+    // get the surah from the params
+    this.surah$ = this.route.params.pipe(
+      switchMap((params: any) => {
+        this.activesurahNumber = params.number;
+        return this.quraanService.getSurah(this.activesurahNumber);
+      }),
+      map((res: IsurahResponse) => res.data)
+    );
+
+    // get all surahs
+    this.surahs$ = this.quraanService
+      .getSurahs()
+      .pipe(map((res: any) => res.data));
   }
   readonly dialog: any = inject(MatDialog);
   openDialog(ayah: string, surah: number, index: number) {
@@ -56,23 +65,20 @@ export class SurahComponent implements OnInit {
     }
   }
   chooseSurah(number: number) {
-    const lastSurah: number = 114;
-    if (number < lastSurah) {
+    if (number < 114) {
       this.router.navigateByUrl(`/surah/${number}`);
     }
   }
   nextSurah() {
-    const lastSurah: number = 114;
-    if (this.ActivesurahNumber < lastSurah) {
-      this.ActivesurahNumber++;
-      this.router.navigateByUrl(`/surah/${this.ActivesurahNumber}`);
+    if (this.activesurahNumber < 114) {
+      this.activesurahNumber++;
+      this.router.navigateByUrl(`/surah/${this.activesurahNumber}`);
     }
   }
   previousSurah() {
-    const firstSurah: number = 1;
-    if (this.ActivesurahNumber > firstSurah) {
-      this.ActivesurahNumber--;
-      this.router.navigateByUrl(`/surah/${this.ActivesurahNumber}`);
+    if (this.activesurahNumber > 1) {
+      this.activesurahNumber--;
+      this.router.navigateByUrl(`/surah/${this.activesurahNumber}`);
     }
   }
 }

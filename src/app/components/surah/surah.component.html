@@ -1,8 +1,8 @@
-<div class="container" *ngIf="surah?.name">
+<div class="container" *ngIf="surah$">
   <header tabindex="0" class="row py-5 g-0 surah-header px-2 mb-5">
     <div class="col">
       <h4 class="text-light">
-        {{ surah?.name }}
+        {{ (surah$ | async)?.name }}
       </h4>
       <ul class="list-group d-flex flex-row list-unstyled align-items-center">
         <!-- start -->
@@ -20,7 +20,7 @@
             <li
               class="dropdown-item"
               tabindex="0"
-              *ngFor="let surah of surahs"
+              *ngFor="let surah of surahs$ | async"
               (click)="chooseSurah(surah.number)"
             >
               {{ surah.name }}
@@ -67,19 +67,21 @@
         <li class="mx-1">
           <span class="text-light fw-bold">ترتيب السورة</span>
           <span class="mx-1 text-secondary badge bg-light text-teal">
-            {{ surah.number }}
+            {{ (surah$ | async)?.number }}
           </span>
         </li>
         <li class="mx-1">
           <span class="text-light fw-bold">عدد اﻵيات</span>
           <span class="mx-1 text-secondary badge bg-light text-teal">
-            {{ surah.numberOfAyahs }}</span
+            {{ (surah$ | async)?.numberOfAyahs }}</span
           >
         </li>
         <li class="mx-1">
           <span class="text-light fw-bold">التنزيل</span>
           <span class="mx-1 text-secondary badge bg-light text-teal">
-            {{ surah.revelationType === "Medinan" ? "مدنية" : "مكية" }}</span
+            {{
+              (surah$ | async)?.revelationType === "Medinan" ? "مدنية" : "مكية"
+            }}</span
           >
         </li>
       </ul>
@@ -89,14 +91,14 @@
     <button
       class="btn btn-teal"
       (click)="previousSurah()"
-      [ngClass]="surah.number === 1 ? 'disabled' : ''"
+      [ngClass]="(surah$ | async)?.number === 1 ? 'disabled' : ''"
     >
       السورة السابقة
     </button>
-    <h3>{{ surah?.name }}</h3>
+    <h3>{{ (surah$ | async)?.name }}</h3>
     <button
       class="btn btn-teal"
-      [ngClass]="surah.number === 114 ? 'disabled' : ''"
+      [ngClass]="(surah$ | async)?.number === 114 ? 'disabled' : ''"
       (click)="nextSurah()"
     >
       السورة التالية
@@ -104,16 +106,16 @@
   </div>
   <div class="row justify-content-center m-higher text-center">
     <div class="col-md-8 col-sm-12">
-      <ng-container *ngFor="let ayah of ayahs; let i = index">
+      <ng-container *ngFor="let ayah of (surah$ | async)?.ayahs; let i = index">
         <span
           class="aya position-relative"
           [ngClass]="selectedFont"
           [id]="i"
           [class.aya-bookMark]="
             i === bookMarkInfo?.ayahIndex &&
-            surah.number === bookMarkInfo.surahNumber
+            (surah$ | async)?.number === bookMarkInfo.surahNumber
           "
-          (click)="openDialog(ayah.text, surah.number, i)"
+          (click)="openDialog(ayah.text, activesurahNumber, i)"
         >
           {{ ayah?.text }}
         </span>
