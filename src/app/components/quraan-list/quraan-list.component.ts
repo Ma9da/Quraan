@@ -3,6 +3,8 @@ import { QuraanService } from '../../services/quraan.service';
 import { NgFor, NgIf } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router, RouterLink } from '@angular/router';
+import { Isurah } from '../../model/isurah';
+import { IsurahResponse } from '../../model/isurah-response';
 @Component({
   selector: 'app-quraan-list',
   standalone: true,
@@ -12,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './quraan-list.component.css',
 })
 export class QuraanListComponent implements OnInit {
-  surahs: Array<any> = [];
+  surahs!: any;
   quraanService = inject(QuraanService);
   router = inject(Router);
   // pagination
@@ -21,8 +23,10 @@ export class QuraanListComponent implements OnInit {
   showFirstLastButtons: boolean = true;
 
   ngOnInit() {
-    this.quraanService.getSurahs().subscribe((data: any) => {
-      this.surahs = data.data;
+    this.quraanService.getSurahs().subscribe((surah: IsurahResponse) => {
+      const responseSurah = surah.data;
+
+      this.surahs = responseSurah;
     });
   }
   gotoItems(surah: any) {
@@ -32,7 +36,9 @@ export class QuraanListComponent implements OnInit {
   // pagination
   get paginatedQuraan() {
     const startIndex = this.currentPage * this.pageSize;
-    return this.surahs.slice(startIndex, startIndex + this.pageSize);
+    if (this.surahs) {
+      return this.surahs.slice(startIndex, startIndex + this.pageSize);
+    }
   }
   handlePage(pageEvent: PageEvent) {
     this.currentPage = pageEvent.pageIndex;

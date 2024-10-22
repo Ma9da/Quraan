@@ -26,10 +26,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class BookmarkModalComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { ayah: string; surah: number; index: number },
-    private bookmarkservice: BookMarkService
+    public data: { ayah: string; surah: number; index: number }
   ) {}
+  bookMarkService = inject(BookMarkService);
   addBookmark(surahNumber: number, ayahIndex: number) {
-    this.bookmarkservice.addBookMark(surahNumber, ayahIndex);
+    this.bookMarkService.addBookMark(surahNumber, ayahIndex);
   }
 }
