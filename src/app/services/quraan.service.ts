@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Isurah } from '../model/isurah';
+import { IsurahResponse } from '../model/isurah-response';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +20,10 @@ export class QuraanService {
     return this.http.get(`${this.baseUrl}${this.surahEndPoint}`);
   }
   // get each surah
-  getSurah(number: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}${this.surahEndPoint}/${number}`);
+  getSurah(number: number): Observable<IsurahResponse> {
+    return this.http.get<IsurahResponse>(
+      `${this.baseUrl}${this.surahEndPoint}/${number}`
+    );
   }
   // get all tafsirs
   // to get specific tafsit => `surah/${number}/editions/${tafsirname}`
