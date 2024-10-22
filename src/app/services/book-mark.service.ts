@@ -44,9 +44,7 @@ export class BookMarkService {
   navigateToBookMark() {
     const surahNumber = this.getBookMark().surahNumber;
     const ayahIndex = this.getBookMark().ayahIndex;
-    if (surahNumber && ayahIndex) {
-      this.router.navigate([`/surah/${surahNumber}`], { fragment: ayahIndex });
-    }
+    this.router.navigate([`/surah/${surahNumber}`], { fragment: ayahIndex });
   }
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
