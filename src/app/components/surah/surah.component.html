@@ -23,7 +23,7 @@
               *ngFor="let surah of surahs$ | async"
               (click)="chooseSurah(surah.number)"
             >
-              {{ surah.name }}
+              {{ surah?.name }}
             </li>
           </ul>
         </li>
@@ -106,23 +106,22 @@
   </div>
   <div class="row justify-content-center m-higher text-center">
     <div class="col-md-8 col-sm-12">
-      <ng-container *ngFor="let ayah of (surah$ | async)?.ayahs; let i = index">
+      <ng-container *ngFor="let ayah of (surah$ | async)?.ayahs">
         <span
+          appBookMark
+          [surahNumber]="activesurahNumber"
+          [ayahNumberInSurah]="ayah.numberInSurah"
           class="aya position-relative"
           [ngClass]="selectedFont"
-          [id]="i"
-          [class.aya-bookMark]="
-            i === bookMarkInfo?.ayahIndex &&
-            (surah$ | async)?.number === bookMarkInfo.surahNumber
-          "
-          (click)="openDialog(ayah.text, activesurahNumber, i)"
+          [id]="ayah?.numberInSurah"
+          (click)="openDialog(ayah.text, activesurahNumber, ayah.numberInSurah)"
         >
           {{ ayah?.text }}
         </span>
         <span class="aya-number mx-1 position-relative d-inline-block">
           <img src="assets/icons/Ayah2.svg" class="w-100" alt="aya-number" />
           <p class="position-absolute m-0 text-center">
-            {{ ayah.numberInSurah }}
+            {{ ayah?.numberInSurah }}
           </p>
         </span>
       </ng-container>

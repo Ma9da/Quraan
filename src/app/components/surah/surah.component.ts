@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuraanService } from '../../services/quraan.service';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { BookMarkService } from '../../services/book-mark.service';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,14 +10,21 @@ import { BookmarkModalComponent } from '../bookmark-modal/bookmark-modal.compone
 import { IsurahResponse } from '../../model/isurah-response';
 import { Isurah } from '../../model/isurah';
 import { Iayah } from '../../model/iayah';
-import { IsurahsResponse } from '../../model/isurahs-response';
 import { map, Observable, switchMap } from 'rxjs';
+import { BookMarkDirective } from '../../directives/book-mark.directive';
 @Component({
   selector: 'app-surah',
   standalone: true,
   templateUrl: './surah.component.html',
   styleUrl: './surah.component.css',
-  imports: [NgFor, NgIf, NgClass, MatButtonModule, AsyncPipe],
+  imports: [
+    NgFor,
+    NgIf,
+    NgClass,
+    MatButtonModule,
+    AsyncPipe,
+    BookMarkDirective,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SurahComponent implements OnInit {

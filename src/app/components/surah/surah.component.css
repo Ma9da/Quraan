@@ -1,5 +1,7 @@
-* {
-  font-family: "tajawel" !important;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap");
+body {
+  font-family: "Noto Sans Arabic", sans-serif;
+  font-family: "tajawel";
 }
 .aya-number {
   width: 30px;
@@ -32,14 +34,6 @@ p {
 }
 .aya:hover .bookmark-btn {
   opacity: 1;
-}
-.aya-bookMark {
-  background-color: var(--teal-transparent);
-  transition: 1s;
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  -ms-transition: 1s;
-  -o-transition: 1s;
 }
 /* adjusting font dropdown  */
 .normal {
