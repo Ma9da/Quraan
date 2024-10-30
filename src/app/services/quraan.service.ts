@@ -12,7 +12,6 @@ export class QuraanService {
   surahEndPoint: string = `/surah`;
   tafsirEndPoint: string = `/edition/type/tafsir`;
   recietersEndPoing: string = `/edition/format/audio`;
-  audioEndPoint: string = `/ar.alafasy`;
 
   constructor(private http: HttpClient) {}
   // get all surahs
@@ -33,5 +32,10 @@ export class QuraanService {
   // get all recienters avalible names
   getSurahsRecieters(): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.recietersEndPoing}`);
+  }
+  getSurahsAudio(surahNumber: string, recieterIdentifier: string) {
+    return this.http.get(
+      `${this.surahEndPoint}/${surahNumber}/${recieterIdentifier}`
+    );
   }
 }
