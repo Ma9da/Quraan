@@ -1,45 +1,53 @@
 <div class="container">
   <div class="row justify-content-center my-5">
     <div class="col text-center">
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          اختر القارئ
-        </button>
-        <ul class="dropdown-menu list-height overflow-y-scroll">
-          <ng-container *ngFor="let recieter of recieters">
-            <li
-              class="dropdown-item"
-              [ngClass]="recieter.language !== 'ar' ? 'visually-hidden' : ''"
+      <form class="d-flex justify-content-start">
+        <!-- start -->
+        <div class="form-floating mx-1">
+          <select
+            class="form-select"
+            id="floatingSelectRecieter"
+            aria-label="Floating label select example"
+          >
+            <option selected>اختر اسم القارئ</option>
+            <ng-container
+              *ngFor="let recieter of (recieters | async)?.data; let i = index"
             >
-              {{ recieter.name }}
-            </li>
-          </ng-container>
-        </ul>
+              <option *ngIf="recieter.language === 'ar'" value="{{ i }}">
+                {{ recieter.name }}
+              </option>
+            </ng-container>
+          </select>
+          <label for="floatingSelectRecieter">القارئ</label>
+        </div>
+        <!-- end -->
+        <!-- start -->
+        <div class="form-floating mx-1">
+          <select
+            class="form-select"
+            id="floatingSelectSurah"
+            aria-label="Floating label select example"
+          >
+            <option selected>اختر اسم السورة</option>
+            <ng-container
+              *ngFor="let surah of (surahs | async)?.data; let i = index"
+            >
+              <option value="{{ i }}">
+                {{ surah.name }}
+              </option>
+            </ng-container>
+          </select>
+          <label for="floatingSelectSurah">السورة</label>
+        </div>
+        <!-- end -->
+      </form>
+      <div class="my-5">
+        <audio controls class="list-group">
+          <source src="horse.ogg" type="audio/ogg" />
+          <source src="horse.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </div>
-    </div>
-  </div>
-  <div class="row my-5">
-    <div class="col-3">
-      <!-- <ul class="list-group">
-        <li class="list-group-item active" aria-current="true">
-          An active item
-        </li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">
-          <figure>
-            <audio
-              class="w-100"
-              controls
-              src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3"
-            ></audio>
-          </figure>
-        </li>
-      </ul> -->
     </div>
   </div>
 </div>

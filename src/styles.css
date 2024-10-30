@@ -44,6 +44,14 @@ body::-webkit-scrollbar-thumb {
 svg {
   fill: #ffffff;
 }
+.aya-bookMark {
+  background-color: var(--teal-transparent);
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
 .text-teal {
   color: var(--teal-dark) !important;
 }

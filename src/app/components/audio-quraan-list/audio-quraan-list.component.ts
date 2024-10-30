@@ -1,21 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { QuraanService } from '../../services/quraan.service';
-import { NgClass, NgFor, NgStyle } from '@angular/common';
+import { AsyncPipe, NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Isurah } from '../../model/isurah';
+import { IsurahsResponse } from '../../model/isurahs-response';
 
 @Component({
   selector: 'app-audio-quraan-list',
   standalone: true,
-  imports: [NgFor, NgStyle, NgClass],
+  imports: [NgIf, NgFor, NgStyle, NgClass, AsyncPipe],
   templateUrl: './audio-quraan-list.component.html',
   styleUrl: './audio-quraan-list.component.css',
 })
 export class AudioQuraanListComponent implements OnInit {
   quraanService = inject(QuraanService);
-  recieters: any = [];
+  recieters!: Observable<any>;
+  surahs!: Observable<IsurahsResponse>;
   ngOnInit(): void {
-    this.quraanService.getSurahsRecieters().subscribe((recieters: any) => {
-      this.recieters = recieters.data;
-      console.log(this.recieters);
-    });
+    this.recieters = this.quraanService.getSurahsRecieters();
+    this.surahs = this.quraanService.getSurahs();
+  }
+  // create and save the info from the select
+  // uuse them to fire this function and display the output
+  getAudio(surah: string, identifier: string) {
+    this.quraanService.getSurahsAudio(surah, identifier);
   }
 }
